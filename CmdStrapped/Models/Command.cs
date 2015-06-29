@@ -10,7 +10,7 @@ namespace CmdStrapped.Models
     {
         public int CommandId { get; set; }
         public string Hook { get; set; }
-        public Action Method { get; set; }
+        public Action<String> Method { get; set; }
         public string Description { get; set; }
     }
 }

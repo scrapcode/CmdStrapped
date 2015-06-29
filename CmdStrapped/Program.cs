@@ -71,11 +71,21 @@ namespace CmdStrapped
         //
         private bool ParseCommand(string cmd)
         {
+            int indexOfWhitespace = cmd.IndexOf(" "); // find the first occurrance of whitespace (if any)
+            string commandArguments = ""; // declare an initialize the argument string
+
+            if(indexOfWhitespace > 0)
+            {
+                // breaks the command into 2 parts: the command, and the argument string.
+                commandArguments = cmd.Substring( ( indexOfWhitespace + 1 ), ( cmd.Length - indexOfWhitespace - 1 ) );
+                cmd = cmd.Substring(0, cmd.IndexOf(" "));
+            }
+
             // check if the command exists in our Command list
             if (this.commands.Exists(c => c.Hook.Equals(cmd)))
             {
                 var theCmd = this.commands.Where(c => c.Hook.Equals(cmd)).First();  // the command
-                theCmd.Method(); // runs the command
+                theCmd.Method(commandArguments); // runs the command
                 return true;
             }
             else

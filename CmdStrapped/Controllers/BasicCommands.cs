@@ -11,7 +11,7 @@ namespace CmdStrapped.Controllers
         //
         // Shows a short help documentation.
         //
-        public static void ShowHelp()
+        public static void ShowHelp(string args)
         {
             Program TempProg = new Program();
 
@@ -30,7 +30,7 @@ namespace CmdStrapped.Controllers
         //
         // Exits the application.
         //
-        public static void Exit()
+        public static void Exit(string args)
         {
             Console.WriteLine("Are you sure? Y/n");
             if(Console.ReadLine().ToString().Equals("Y"))
